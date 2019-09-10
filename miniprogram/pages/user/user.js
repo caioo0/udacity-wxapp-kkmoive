@@ -7,10 +7,11 @@ Page({
     userInfo: null
   },
   onLoad: function (options) {
-    this.getMyCollection()
     wx.showLoading({
-      title: '',
+      title: '玩命加载中...',
     })
+    this.getMyCollection()
+  
   },
   onShow() {
     util.getUserInfo().then(userInfo => {

@@ -1,5 +1,6 @@
 # 侃侃看电影 
  页面效果见 ![UDACITY-交互图](https://s3.cn-north-1.amazonaws.com.cn/static-documents/nd666/%E7%9C%8B%E7%9C%8B%E4%BE%83%E4%BE%83%E7%94%B5%E5%BD%B1%E8%B5%84%E6%BA%90/%E4%BA%A4%E4%BA%92%E5%9B%BE2.png)
+
 ## 结构：
   - 首页：home
   - 热门：hotmovie
@@ -21,3 +22,8 @@
   - movieComments
   - myFavoires 
 
+## 部分实现效果
+![首页](./images/微信图片_20190910134810.png)
+![我的](./images/微信图片_20190910134906.png)
+![我的](./images/微信图片_20190910134818.png)
+![影评详情](./images/微信图片_20190910134823.png)
