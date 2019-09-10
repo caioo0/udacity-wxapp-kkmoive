@@ -7,8 +7,19 @@ const db = cloud.database()
 
 // 云函数入口函数
 exports.main = async (event, context) => {
-  const movie = db.collection('movies').where({
+
+  const wxContext = cloud.getWXContext()
+  const user = wxContext.OPENID
+  const hascomment = await db.collection('movieComments').where({
+    user: user,
+    movieId: event.id
+  }).count()
+
+  const movie = await db.collection('movies').where({
     _id: event.id
   }).get()
-  return movie
+
+  const res = movie
+  res.hascomment = hascomment.total
+  return res
 }

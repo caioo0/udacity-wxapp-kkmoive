@@ -5,6 +5,7 @@ Page({
     movie: {},
     movieId:'',
     actionSheetHidden: true,
+    iscomment:false,
     actionSheetItems: ['文字', '音频']
   },
   onLoad: function (options) {
@@ -22,6 +23,7 @@ Page({
       wx.hideLoading()
       console.log(res.result)
       let movie = res.result.data[0]
+
       let movieDetail = {
         image: movie.image,
         title: movie.title
@@ -29,7 +31,8 @@ Page({
       wx.setStorageSync('movieDetail', movieDetail)
       this.setData({
         movieId:id,
-        movie
+        movie,
+        iscomment: res.result.hascomment
       })
     }).catch(err => {
       console.error(err)
@@ -37,10 +40,20 @@ Page({
     })
   },
   // 底部弹出框
-  actionSheetTap(event) {
+  actionSheetTap(event) {  
+    if (this.data.iscomment)
+    {
+      wx.showToast({
+        icon: 'none',
+        title: '您已评论过该电影'
+      })
+      return false
+    }
+   
     // this.setData({
     //   actionSheetHidden: !this.data.actionSheetHidden
     // })
+  
     console.log(event.currentTarget)
     let movieId = this.data.movie._id;
     let commentType = "";

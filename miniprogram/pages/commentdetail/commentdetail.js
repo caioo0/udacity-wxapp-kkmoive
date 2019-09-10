@@ -89,6 +89,15 @@ Page({
   },
   // 底部弹出框
   actionSheetTap(event) {
+
+    if (this.data.comment.movieId) {
+      wx.showToast({
+        icon: 'none',
+        title: '您已评论过该电影'
+      })
+      return false
+    }
+
     // this.setData({
     //   actionSheetHidden: !this.data.actionSheetHidden
     // })

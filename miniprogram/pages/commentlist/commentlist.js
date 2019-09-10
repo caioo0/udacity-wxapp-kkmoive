@@ -99,6 +99,7 @@ Page({
   },
   // 播放录音
   playRecord(voice) {
+    const innerAudioContext = wx.createInnerAudioContext()
     innerAudioContext.autoplay = true;
     innerAudioContext.src = voice;
     innerAudioContext.onPlay(() => {

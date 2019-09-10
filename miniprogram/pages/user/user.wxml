@@ -16,7 +16,7 @@
       <view class='item-right'>
         <view class='item-title'>{{item.title}}</view>
         <view class='item-comment' wx:if="{{item.content!=''}}">{{item.content}}</view>
-          <view class='record-Radio' catchtap='startPlay' wx:else>
+          <view class='record-Radio' wx:else>
             <view class='radio-container' data-item='{{item}}'>
               <image src="/images/play.png" class='radio-image'></image>
               <view class='radio-duration'>{{item.voiceTime}}s</view>
@@ -40,7 +40,15 @@
       </view>
       <view class='item-right'>
         <view class='item-title'>{{item.title}}</view>
-        <view class='item-comment'>{{item.content}}</view>
+        <view class='item-comment' wx:if="{{item.content!=''}}">{{item.content}}</view>
+          <view class='record-Radio' wx:else>
+            <view class='radio-container' data-item='{{item}}'>
+              <image src="/images/play.png" class='radio-image'></image>
+              <view class='radio-duration-small'>{{item.voiceTime}}</view>
+              <view class='radio-play' wx:if='{{startPlay}}'>
+              </view>
+            </view>
+          </view>
         <view class='item-person'>
           <image class='head-short' src='{{item.headshort}}'></image>
           <view>{{item.name}}</view>
