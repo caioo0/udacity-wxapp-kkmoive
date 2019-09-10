@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "影评预览",
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle": "dark",
+  "usingComponents": {
+    "login": "/components/login/login"
+  }
+}

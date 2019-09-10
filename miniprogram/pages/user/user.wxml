@@ -1,0 +1,60 @@
+<view class='my-container'>
+  <view wx:if="{{!userInfo}}" class='login-content'>
+  <login bindonLogin="onTapLogin"></login>
+  </view>
+  <view wx:else>
+    <view class='my_tabs' bindtap='selectTab'>
+    <view class='tab_collection {{selectNum==0? "tab_selected":""}}' data-num="0">收藏的影评{{selectNum == 0? '∨': ''}}</view>
+    <view class='tab_release {{selectNum==1? "tab_selected":""}}' data-num="1">发布的影评{{selectNum == 0? '': '∨'}}</view>
+  </view>
+  <view wx:if="{{selectNum == 1}}">
+    <view wx:for="{{movieList}}" wx:key="{{item._id}}">
+      <navigator url='../commentdetail/commentdetail?commentId={{item._id}}' class='my-item'>
+      <view class='item-left'>
+        <image class='item-img' src="{{item.image}}" mode="widthFix"></image>
+      </view>
+      <view class='item-right'>
+        <view class='item-title'>{{item.title}}</view>
+        <view class='item-comment' wx:if="{{item.content!=''}}">{{item.content}}</view>
+          <view class='record-Radio' catchtap='startPlay' wx:else>
+            <view class='radio-container' data-item='{{item}}'>
+              <image src="/images/play.png" class='radio-image'></image>
+              <view class='radio-duration'>{{item.voiceTime}}s</view>
+              <view class='radio-play' wx:if='{{startPlay}}'>
+              </view>
+            </view>
+          </view>
+        <view class='item-person'>
+          <image class='head-short' src='{{item.headshort}}'></image>
+          <view>{{item.name}}</view>
+        </view>
+      </view>
+      </navigator>
+    </view>
+  </view>
+  <view wx:if="{{selectNum == 0}}">
+    <view wx:for="{{movieList}}" wx:key="{{item.commentid}}">
+      <navigator url='../commentdetail/commentdetail?commentId={{item.commentid}}' class='my-item'>
+      <view class='item-left'>
+        <image class='item-img' src="{{item.image}}" mode="widthFix"></image>
+      </view>
+      <view class='item-right'>
+        <view class='item-title'>{{item.title}}</view>
+        <view class='item-comment'>{{item.content}}</view>
+        <view class='item-person'>
+          <image class='head-short' src='{{item.headshort}}'></image>
+          <view>{{item.name}}</view>
+        </view>
+      </view>
+      </navigator>
+    </view>
+  </view>
+</view>
+   <view class="comment-empty comment-container" wx:if="{{movieList.length === 0}}">
+    <image class="empty-image" src="{{selectNum == 0?'/images/star-disable.png':'/images/send-disable.png'}}"></image>
+    <view class="empty-text">{{selectNum == 0?'您暂时还没有收藏影评':'您暂时还没有发布影评'}}</view>
+  </view>
+  <view class='skip-buttons'>
+    <view class='btn' bindtap='skipToHome'>回到首页</view>
+  </view>
+</view>

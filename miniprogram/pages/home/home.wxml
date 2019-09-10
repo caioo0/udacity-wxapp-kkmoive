@@ -1,0 +1,20 @@
+
+  <view class='container' wx:if="{{movie}}">
+    <image class='movie-image' src="{{movie.image}}" movieId="{{movie._id}}" mode='widthFix' bindtap='goToMovieinfo'></image>
+    <view class='movie-title'>{{movie.title}}</view>
+  </view>
+   <view wx:if="{{comment}}">
+     <view class='content-wrapper' bindtap='goToCommentDetail' id="{{comment._id}}">
+      <image class="user-avatar" src="{{comment.headshort}}"></image>
+      <view class='content-text'>{{comment.name}}给你推荐了一部电影</view>
+     </view>
+    </view>
+
+    <view class='skip-buttons'>
+    <view class='btn iconfont icon-remen' bindtap='goTohot'>热门</view>
+    <view class='btn iconfont icon-wode' bindtap='goToMe'>我的</view>
+  </view>
+  <view class="movie-empty movie-container" wx:if="{{!movie}}">
+    <image class="empty-image " src="/images/hot-disable.png"></image>
+    <view class="empty-text">暂时还没有可推荐电影</view>
+  </view>

@@ -1,0 +1,35 @@
+
+<view wx:if="{{!userInfo}}">
+  <login bindonLogin="onTapLogin"></login>
+</view>
+  <view wx:else>
+<view class='comment-container'>
+  <image class='comment-img' src='{{image}}' mode="widthFix"></image>
+  <view class='comment-detail'>
+    <view class='comment-title'>{{title}}</view>
+    <view class='comment-content'>
+      <view class='comment-top'>
+        <image class='head-short' src='{{userInfo.avatarUrl}}'></image>
+        <view class='comment-name'>{{userInfo.nickName}}的影评</view>
+      </view>
+      <view class='comment-bottom'>
+        <view wx:if="{{isText}}">
+          <view class='iconfont icon-baojiaquotation2'></view>
+          <view class='content-txt'>{{content}}</view>
+        </view>
+        <view class='record-Radio' bindtap='startPlay' wx:else>
+          <view class='radio-container'>
+           <image src="{{startPlay === false? '/images/play.png' : '/images/stop.png'}}" class='radio-image'></image>
+            <view class='radio-duration'>{{radioTimer}}s</view>
+            <view class='radio-play' wx:if='{{startPlay}}'></view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class='skip-buttons'>
+      <view class='btn iconfont icon-chexiao' bindtap='backToComment'>重新编辑</view>
+      <view class='btn iconfont icon-fabu' bindtap='saveToComment'>发布影评</view>
+    </view>
+  </view>
+</view>
+</view>

@@ -1,0 +1,8 @@
+  <view class="login-card">
+        <view class='login-head'></view>
+        <view class='login-info'>
+          <view class='login-text'>未登录</view>
+          <view class='login-tips'>请点击“登陆”按钮授权登陆</view>
+        </view>
+      </view>
+      <button class='login-btn' open-type='getUserInfo' bindgetuserinfo='onTapLogin'>登陆</button>

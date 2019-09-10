@@ -1,0 +1,21 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/user/user",
+    "pages/hotmovie/hotmovie",
+    "pages/moviedetail/moviedetail",
+    "pages/commentlist/commentlist",
+    "pages/commentdetail/commentdetail",
+    "pages/add-comment/add-comment",
+    "pages/preview-comment/preview-comment"
+  ],
+  "window": {
+    "backgroundColor": "#F6F6F6",
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#F6F6F6",
+    "navigationBarTitleText": "侃侃看电影",
+    "navigationBarTextStyle": "black",
+    "onReachBottomDistance": 200
+  },
+  "sitemapLocation": "sitemap.json"
+}

@@ -1,0 +1,34 @@
+<!--miniprogram/pages/commentDetail/commentDetail.wxml-->
+<view class='comment-container'>
+  <image class='comment-img' src='{{comment.image}}' mode="widthFix" bindtap='skipTomovie'></image>
+  <view class='comment-detail'>
+    <view class='comment-title'>{{comment.title}}</view>
+    <view class='comment-content'>
+      <view class='comment-top'>
+        <image class='head-short' src='{{comment.headshort}}'></image>
+        <view class='comment-name'>{{comment.name}}的影评</view>
+      </view>
+      <view class='comment-bottom'>
+        <view wx:if="{{comment.content!=''}}">
+          <view class='iconfont icon-baojiaquotation2'></view>
+          <view class='content-txt'>{{comment.content}}</view>
+        </view>
+        <view class='record-Radio' bindtap='startPlay' wx:else>
+          <view class='radio-container'>
+             <image src="{{startPlay === false? '/images/play.png' : '/images/stop.png'}}" class='radio-image'></image>
+            <view class='radio-duration'>{{playTime}}</view>
+            <view class='radio-play' wx:if='{{startPlay}}'>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class='skip-buttons'>
+      <view class="btn iconfont {{addToFavorite?'icon-shoucang1':'icon-shoucang'}}" bindtap='skipToComment'>
+        <text wx:if="{{addToFavorite}}">已收藏</text>
+        <text wx:else>收藏影评</text>
+      </view>
+      <view class='btn iconfont icon-xieyingping' bindtap='actionSheetTap'>写影评</view>
+    </view>
+  </view>
+</view>

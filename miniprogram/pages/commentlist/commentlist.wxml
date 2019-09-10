@@ -1,0 +1,32 @@
+
+<view class='list-container'>
+  <view wx:for='{{commentlist}}' wx:key='{{item._id}}'  wx:for-index="idx"  data-id="{{item._id}}">
+    <navigator url='../commentdetail/commentdetail?commentId={{item._id}}' class='list-item'>
+      <view class='comment-item'>
+        <view class='item-top'>
+          <image class='item-header' src='{{item.headshort}}'></image>
+           <view>{{item.name}}</view>
+           <view>{{item.createTime}}</view>
+        </view>
+        <view class='item-bottom'>
+          <view class='item-content' wx:if="{{item.content!=''}}">{{item.content}}</view>
+          <view class='record-Radio'  wx:else>
+            <view class='radio-container' catchtap='startPlay' data-item='{{item}}' data-index="{{idx}}">
+              <image src="{{audioStatus[idx] === 0? '/images/play.png' : '/images/stop.png'}}" class='radio-image'></image>
+              <view class='radio-duration'>{{item.voiceTime}}s</view>
+              <view class='radio-play' wx:if='{{audioStatus[idx]===1}}'>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </navigator>
+  </view>
+     <view class="comment-empty comment-container" wx:if="{{commentlist.length === 0}}">
+    <image class="empty-image" src="/images/send-disable.png"></image>
+    <view class="empty-text">暂时还没有影评</view>
+  </view>
+  <view class='skip-buttons'>
+    <view class='btn' bindtap='skipToHome'>回到首页</view>
+  </view>
+</view>
